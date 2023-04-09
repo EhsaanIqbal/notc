@@ -20,7 +20,7 @@ const (
 	PLUS     = "+"
 	MINUS    = "-"
 	BANG     = "!"
-	ASTERICK = "*"
+	ASTERISK = "*"
 	SLASH    = "/"
 	LT       = "<"
 	GT       = ">"
@@ -29,7 +29,7 @@ const (
 
 	// Delimeters
 	COMMA     = ","
-	SEMICOLAN = ";"
+	SEMICOLON = ";"
 
 	LPAREN = "("
 	RPAREN = ")"
