@@ -22,6 +22,7 @@ func (l *Lexer) NextToken() token.Token {
 	// Ignore whitespaces
 	l.skipWhitespace()
 
+	// Match current character to Token
 	switch l.ch {
 	case '=':
 		if l.peekChar() == '=' {

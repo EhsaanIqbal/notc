@@ -14,12 +14,12 @@ type Node interface {
 
 type Statement interface {
 	Node
-	statementNode()
+	statementNode() // dummy method
 }
 
 type Expression interface {
 	Node
-	expressionNode()
+	expressionNode() // dummy method
 }
 
 // Root node of the AST
