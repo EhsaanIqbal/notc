@@ -9,7 +9,6 @@ import (
 	"github.com/ehsaaniqbal/notc/lexer"
 	"github.com/ehsaaniqbal/notc/object"
 	"github.com/ehsaaniqbal/notc/parser"
-	// "github.com/ehsaaniqbal/notc/token"
 )
 
 const PROMPT = ">> "
