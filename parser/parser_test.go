@@ -2,10 +2,32 @@ package parser
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/ehsaaniqbal/notc/ast"
 	"github.com/ehsaaniqbal/notc/lexer"
-	"testing"
 )
+
+func TestStringLiteralExpressions(t *testing.T) {
+	input := `"hello world";`
+
+	l := lexer.New(input)
+	p := New(l)
+	program := p.ParseProgram()
+
+	checkParserErrors(t, p)
+
+	statement := program.Statements[0].(*ast.ExpressionStatement)
+	literal, ok := statement.Expression.(*ast.StringLiteral)
+	if !ok {
+		t.Fatalf("expression not *ast.StringLiteral. got=%T", statement.Expression)
+	}
+
+	if literal.Value != "hello world" {
+		t.Errorf(
+			"literal.Value not %q. got=%q", "hello world", literal.Value)
+	}
+}
 
 func TestLetStatements(t *testing.T) {
 	tests := []struct {
