@@ -1,6 +1,10 @@
 package evaluator
 
-import "github.com/ehsaaniqbal/notc/object"
+import (
+	"fmt"
+
+	"github.com/ehsaaniqbal/notc/object"
+)
 
 var builtins = map[string]*object.Builtin{
 	"len": {
@@ -38,6 +42,15 @@ var builtins = map[string]*object.Builtin{
 			newElements[length] = args[1]
 
 			return &object.Array{Elements: newElements}
+		},
+	},
+	"print": {
+		Fn: func(args ...object.Object) object.Object {
+			for _, arg := range args {
+				fmt.Println(arg.Inspect())
+			}
+
+			return NULL
 		},
 	},
 }
