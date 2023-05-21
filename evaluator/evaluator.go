@@ -1,3 +1,6 @@
+// Package evaluator implements a tree-walker interpreter that
+// recursively walks the parsed AST and evaluates
+// the nodes according to their semantic meaning
 package evaluator
 
 import (
@@ -7,12 +10,14 @@ import (
 	"github.com/ehsaaniqbal/notc/object"
 )
 
+// Cached Boolean and Null objects
 var (
 	TRUE  = &object.Boolean{Value: true}
 	FALSE = &object.Boolean{Value: false}
 	NULL  = &object.Null{}
 )
 
+// Evaluates an AST node and returns an object
 func Eval(node ast.Node, env *object.Environment) object.Object {
 	switch node := node.(type) {
 	// Statements

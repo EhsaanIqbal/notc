@@ -2,6 +2,7 @@ package parser
 
 import (
 	"fmt"
+	"io"
 	"strconv"
 
 	"github.com/ehsaaniqbal/notc/ast"
@@ -459,4 +460,11 @@ func (p *Parser) peekError(t token.TokenType) {
 func (p *Parser) noPrefixParseFnError(t token.TokenType) {
 	msg := fmt.Sprintf("no prefix parse function for %s found", t)
 	p.errors = append(p.errors, msg)
+}
+
+func PrintParserErrors(out io.Writer, errors []string) {
+	io.WriteString(out, "PARSING ERROR\n")
+	for _, msg := range errors {
+		io.WriteString(out, "\t"+msg+"\n")
+	}
 }

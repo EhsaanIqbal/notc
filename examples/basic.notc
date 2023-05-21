@@ -1,0 +1,10 @@
+let x = 100
+let y = 200
+
+let mul = fn(x, y){
+    return x * y
+}
+
+print(mul(x, y))
+
+

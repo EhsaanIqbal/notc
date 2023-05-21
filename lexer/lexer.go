@@ -1,7 +1,12 @@
+// Package lexer implements the lexical analysis that is used to
+// transform the source code input into a stream of tokens for
+// parsing by the parser.
 package lexer
 
 import "github.com/ehsaaniqbal/notc/token"
 
+// Represents the Lexer and contains the source input
+// and internal state
 type Lexer struct {
 	input        string
 	position     int  // current position in input
@@ -9,6 +14,7 @@ type Lexer struct {
 	ch           byte // current character
 }
 
+// Returns a new Lexer
 func New(input string) *Lexer {
 	l := &Lexer{input: input}
 	l.readChar()
@@ -16,6 +22,7 @@ func New(input string) *Lexer {
 	return l
 }
 
+// Returns the next token read from the input stream
 func (l *Lexer) NextToken() token.Token {
 	var tok token.Token
 
@@ -121,6 +128,8 @@ func (l *Lexer) readString() string {
 	return l.input[position:l.position]
 }
 
+// Reads in an identifier and advances the lexer’s positions
+// until it encounters a non-letter-character.
 func (l *Lexer) readIdentifier() string {
 	position := l.position
 	for isLetter(l.ch) {

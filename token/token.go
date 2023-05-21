@@ -1,7 +1,11 @@
+// Package token implements types and constants to support tokenizing
+// the input source before passing the stream of tokens to the parser.
 package token
 
+// Represents the type of Token
 type TokenType string
 
+// Holds a single token type and its value
 type Token struct {
 	Type    TokenType
 	Literal string
@@ -60,6 +64,8 @@ var keywords = map[string]TokenType{
 	"return": RETURN,
 }
 
+// Looks up the identifier in ident and returns the appropriate
+// token type depending on whether the identifier is user-defined or a keyword
 func LookupIdent(ident string) TokenType {
 	if tok, ok := keywords[ident]; ok {
 		return tok

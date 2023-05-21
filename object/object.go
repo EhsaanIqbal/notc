@@ -1,3 +1,6 @@
+// Package object implements the object system of MaScript
+// used to both represent values as the evaluator encounters and constructs
+// them as well as how the user interacts with values.
 package object
 
 import (
